@@ -1,0 +1,36 @@
+# Central configuration for the demand-forecasting MLOps pipeline.
+
+paths:
+  model_path: models/model.pkl
+  model_metadata: models/metadata.json
+  reports_dir: reports
+  figures_dir: reports/figures
+  mlflow_tracking_uri: sqlite:///mlflow.db   # sqlite backend enables the model registry
+
+registered_model_name: demand-forecaster
+random_state: 42
+
+# Synthetic demand generator
+generator:
+  n_series: 12              # e.g. store-product series
+  n_days: 1095             # 3 years of daily history
+  start_date: "2021-01-01"
+
+# Forecasting
+horizon: 28                # forecast 28 days ahead
+lags: [1, 7, 14, 28]
+rolling_windows: [7, 28]
+
+backtest:
+  n_folds: 4               # rolling-origin evaluation
+  step_days: 28
+
+optuna:
+  n_trials: 20
+  timeout_seconds: 600
+
+# Monitoring / retraining triggers
+monitor:
+  mae_degradation_ratio: 1.25   # retrain if live MAE > 1.25x backtest MAE
+  psi_threshold: 0.2
+  window_days: 28

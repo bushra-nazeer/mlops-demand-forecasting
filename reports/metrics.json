@@ -1,0 +1,19 @@
+{
+  "holdout": {
+    "mae": 10.255069383649515,
+    "rmse": 19.49056094846931,
+    "mape": 6.218305757371525,
+    "smape": 6.370275771712705
+  },
+  "comparison": {
+    "lightgbm_smape": 6.370275771712705,
+    "ets_smape": 7.74004942397372,
+    "seasonal_naive_smape": 11.231579415508678
+  },
+  "backtest": {
+    "backtest_mae": 11.817320658592944,
+    "backtest_rmse": 19.75077426092258,
+    "backtest_mape": 8.271473456474222,
+    "backtest_smape": 8.44553089818318
+  }
+}

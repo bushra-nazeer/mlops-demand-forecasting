@@ -1,0 +1,26 @@
+# Scheduled automated retraining — the MLOps loop in CI.
+# Monitors the live model; retrains and promotes a new version only if drift
+# or error-degradation is detected. Opens a PR (or commits) with the refreshed model.
+name: Scheduled Retrain
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # every Monday 06:00 UTC
+  workflow_dispatch: {}    # allow manual runs
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install OpenMP runtime (lightgbm)
+        run: sudo apt-get update && sudo apt-get install -y libgomp1
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Monitor + retrain if needed
+        run: python -m forecasting.retrain

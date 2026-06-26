@@ -1,8 +1,8 @@
-# mlops-demand-forecasting — Design Spec
+# mlops-demand-forecasting, Design Spec
 
 - **Date:** 2026-06-25
 - **Status:** Approved
-- **Portfolio role:** MLOps lifecycle flagship (repo 3 of 6) — demonstrates the
+- **Portfolio role:** MLOps lifecycle flagship (repo 3 of 6), demonstrates the
   production discipline shared across all three resume personas.
 
 ## Overview
@@ -10,7 +10,7 @@
 Demand forecasting on a synthetic multi-series panel, wrapped in a full MLOps
 lifecycle: rolling-origin backtesting, MLflow tracking + model registry,
 scheduled automated retraining gated by drift/error monitoring, and a FastAPI
-forecasting service. Self-contained and reproducible — no external data.
+forecasting service. Self-contained and reproducible, no external data.
 
 ## Resume claims this proves
 
@@ -24,13 +24,13 @@ forecasting service. Self-contained and reproducible — no external data.
 ## Key design decisions
 
 - **Recursive single-step model** (LightGBM with lag/rolling/calendar features)
-  rolled out to the horizon — one model, any horizon.
-- **No train/serve skew** — training features (vectorized) and serving features
+  rolled out to the horizon, one model, any horizon.
+- **No train/serve skew**: training features (vectorized) and serving features
   (recursive) share definitions.
 - **Rolling-origin backtest** for honest accuracy, not in-sample fit.
 - **sqlite MLflow backend** so the model registry (versions + champion alias) works.
 - **Closed retraining loop** gated by a monitor, runnable from a CI cron.
-- **Prophet optional** (heavier install) — lazily imported; LightGBM + ETS +
+- **Prophet optional** (heavier install), lazily imported; LightGBM + ETS +
   seasonal-naive are the verified models.
 
 ## Components

@@ -37,14 +37,14 @@ Honest **rolling-origin backtest** (train-to-cutoff → forecast unseen 28 days 
 
 ## The MLOps lifecycle (what makes this more than a model)
 
-- **Backtesting** (`backtest.py`) — rolling-origin, the honest way to estimate
+- **Backtesting** (`backtest.py`), rolling-origin, the honest way to estimate
   forecast error; reported metrics come from here, not in-sample fit.
-- **Registry** (`registry.py`) — every model is logged to MLflow (sqlite backend)
+- **Registry** (`registry.py`), every model is logged to MLflow (sqlite backend)
   and the new version is aliased **`champion`** in the Model Registry.
-- **Monitoring** (`monitor.py`) — compares live forecast MAE to the backtest
+- **Monitoring** (`monitor.py`), compares live forecast MAE to the backtest
   baseline and checks demand drift (PSI). A real run reports:
   `mae_ratio 0.87, demand_psi 0.08 → needs_retrain: false` (healthy).
-- **Automated retraining** (`retrain.py` + `.github/workflows/retrain.yml`) — a
+- **Automated retraining** (`retrain.py` + `.github/workflows/retrain.yml`), a
   scheduled workflow runs the monitor and retrains/re-registers **only when the
   gate trips**. The closed loop, not just a notebook.
 
@@ -52,7 +52,7 @@ Honest **rolling-origin backtest** (train-to-cutoff → forecast unseen 28 days 
 
 - **Recursive multi-step** LightGBM: one single-step model rolled out to the
   horizon, feeding predictions back as lag features.
-- **No train/serve skew** — `features.py` (training) and `forecast.py` (serving)
+- **No train/serve skew**: `features.py` (training) and `forecast.py` (serving)
   produce identical feature columns.
 - Features: calendar (day-of-week, month, holidays), lags (1/7/14/28), rolling
   mean/std, promo flag, per-series index.

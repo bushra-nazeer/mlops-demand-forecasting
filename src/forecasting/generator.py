@@ -1,7 +1,7 @@
 """Synthetic multi-series daily demand.
 
 Each series has its own base level, gentle trend, weekly + yearly seasonality,
-occasional promotion spikes, and noise — a realistic forecasting panel with no
+occasional promotion spikes, and noise, a realistic forecasting panel with no
 external data dependency.
 """
 

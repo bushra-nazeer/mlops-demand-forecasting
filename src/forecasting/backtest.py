@@ -1,4 +1,4 @@
-"""Rolling-origin backtesting — the honest way to estimate forecast accuracy.
+"""Rolling-origin backtesting, the honest way to estimate forecast accuracy.
 
 For each fold we train only on data up to a cutoff, recursively forecast the
 horizon, and score against the held-out actuals. Folds step backwards from the

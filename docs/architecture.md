@@ -25,9 +25,9 @@ flowchart LR
 
 - **One feature definition, two code paths.** `features.py` builds the training
   matrix (vectorized); `forecast.py` rebuilds the identical columns one step at a
-  time for recursive forecasting. Same names, same order — no skew.
+  time for recursive forecasting. Same names, same order, no skew.
 - **Honest metrics.** Accuracy comes from `backtest.py` (rolling-origin: train to
-  a cutoff, forecast unseen horizon, repeat) — not from fitting and scoring the
+  a cutoff, forecast unseen horizon, repeat), not from fitting and scoring the
   same data.
 - **Registry-backed.** A sqlite MLflow backend enables versioning; each model is
   logged and aliased `champion`.

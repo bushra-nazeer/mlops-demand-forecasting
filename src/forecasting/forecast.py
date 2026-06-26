@@ -1,7 +1,7 @@
 """Recursive multi-step forecasting.
 
 Predicts one day at a time, feeding each prediction back in as the basis for the
-next day's lag/rolling features — the standard way to roll a single-step model
+next day's lag/rolling features, the standard way to roll a single-step model
 out to a horizon. Feature construction mirrors `features.py` exactly.
 """
 

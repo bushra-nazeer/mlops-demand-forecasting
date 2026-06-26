@@ -68,7 +68,7 @@ def evaluate(cfg: Config) -> dict:
     plt.plot(hist["date"], hist["demand"], color="#46688E", label="history")
     plt.plot(act["date"], act["demand"], color="#15191C", label="actual")
     plt.plot(pr["date"], pr["prediction"], color="#0E7C66", linestyle="--", label="forecast")
-    plt.title(f"Forecast vs actual — {sid} ({cfg.horizon}-day horizon)")
+    plt.title(f"Forecast vs actual, {sid} ({cfg.horizon}-day horizon)")
     plt.legend()
     plt.tight_layout()
     plt.savefig(figures / "forecast_vs_actual.png", dpi=120)

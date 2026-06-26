@@ -2,8 +2,6 @@
 
 - **Date:** 2026-06-25
 - **Status:** Approved
-- **Portfolio role:** MLOps lifecycle flagship (repo 3 of 6), demonstrates the
-  production discipline shared across all three resume personas.
 
 ## Overview
 
@@ -12,9 +10,9 @@ lifecycle: rolling-origin backtesting, MLflow tracking + model registry,
 scheduled automated retraining gated by drift/error monitoring, and a FastAPI
 forecasting service. Self-contained and reproducible, no external data.
 
-## Resume claims this proves
+## What it demonstrates
 
-| Claim | How |
+| Capability | How |
 |---|---|
 | Time-series forecasting (Prophet/LSTM) | LightGBM recursive forecaster + ETS + seasonal-naive baselines; Prophet supported as an optional extra |
 | MLOps, ML pipelines, CI/CD | Backtest → train → register → monitor → retrain, with a scheduled CI workflow |
